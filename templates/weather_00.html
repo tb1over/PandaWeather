@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="/static/img/favicon.ico" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Panda Weather</title>
+<script src="/static/js/jquery-1.11.3.min.js"></script>
+<script src="/static/js/Popt.js"></script>
+<script src="/static/js/cityJson.js"></script>
+<script src="/static/js/citySet.js"></script>
+<script>
+function check_up(){
+    var city = document.getElementById("city").value;
+    if(city.length < 5){
+        alert("请选择城市");
+        return false;
+    }
+    return true;
+}
+</script>
+<style type="text/css">
+* { -ms-word-wrap: break-word; word-wrap: break-word; }
+html { -webkit-text-size-adjust: none;}
+html, body {height:100%;width:100%; }
+input, button, select, textarea {outline:none}
+html, body, h1, h2, h3, h4, h5, h6, div, ul, ol, li, dl, dt, dd, iframe, textarea, input, button, p, strong, b, i, a, span, del, pre, table, tr, th, td, form, fieldset, .pr, .pc { margin: 0; padding: 0; word-wrap: break-word; font-family: verdana,Microsoft YaHei,Tahoma,sans-serif; *font-family: Microsoft YaHei,verdana,Tahoma,sans-serif; }
+body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, .pr, .pc, em, del { font-style: normal; font-size: 80%; }
+ul, ol, dl {
+    list-style: inside }
+._citys { width: 550px;height:100%; display: inline-block; border: 2px solid #eee; padding: 5px; left:-19%;top:-20%; position: relative; background-color: #e7e8e8;}
+._citys span { color: #999999; height: 15px; width: 15px; line-height: 15px; text-align: center; border-radius: 3px; position: absolute; right: 10px; top: 10px; border: 1px solid #a3a3a3; cursor: pointer; }
+._citys0 { width: 100%; height: 34px; display: inline-block; border-bottom: 2px solid #a3a3a3; padding: 0; margin: 0; }
+._citys0 li { display: inline-block; line-height: 34px; font-size: 15px; color: #898989; width: 80px; text-align: center; cursor: pointer; }
+.citySel { background-color: #898989; color: #e7e8e8 !important; }
+._citys1 { width: 100%; display: inline-block; padding: 10px 0; }
+._citys1 a { width: 83px; height: 35px; display: inline-block; background-color: #f5f5f5; color: #666; margin-left: 6px; margin-top: 3px; line-height: 35px; text-align: center; cursor: pointer; font-size: 13px; overflow: hidden; }
+._citys1 a:hover { color: #e7e8e8; background-color: #898989; }
+.AreaS { background-color: #898989 !important; color: #fff !important; }
+</style><link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/inputborder.css">
+</head>
+<style>
+    .area-danxuan {color:#41637C;}
+    .area-danxuan {width:400px;height:40px;font-size:25px; line-height:30px;}
+    input {font-style: italic;}
+    .titlep{font-size: 50px;color: rgba(90, 90, 90, 0.87);font-style: italic}
+    .i{color: #5a5a5a; border:0;cursor:pointer;background-color: rgba(251,252,252,0.3);font-size: 12px;width: 100px;height:18px;padding-top: 1px;
+        font-style: normal;float:right;margin-top:0 }
+</style>
+<script src="/static/js/jquery-1.9.0.min.js"></script>
+<script src="/static/js/jquery.onepage-scroll.min.js"></script>
+<link rel="stylesheet" href="/static/css/onepage-scroll.css" />
+<script>
+$(function(){
+	$('.main').onepage_scroll({
+		sectionContainer: '.page'
+	});
+});
+</script>
+<script src="/static/js/realert.js"></script>
+<link rel="stylesheet" href="/static/css/style.css">
+<body>
+<div class="main">
+<div class="page page1">
+<section class="fog">
+	<figure class="absolute-bg" style="background-image: url('/static/img/home.jpg');"></figure>
+	<div class="fog__container">
+		<div class="fog__img fog__img--first"></div>
+		<div class="fog__img fog__img--second"></div>
+	</div>
+</section>
+<div style="width:100%;top:0;right:1%;z-index:1;position: absolute;border:0">
+<form id="ac" action="/login/" method="post">
+<input type="submit" id="configure" name="configure" value="设置常用城市" style="cursor:pointer;float: left;background-color:rgba(251,252,252,0.3);color:#5a5a5a;font-size: 12px;font-style: normal;width: 76px;height:18px;padding-top: 1px;margin-left: 20px;margin-top: 10px">
+<input type="text" id="uname" name="uname" readonly="readonly" value="Hi,{{ uname }}" style="padding-bottom:1px;font-size: 14px;color:#e7e8e8;float:right;text-align: right;width:30%;border: 0;opacity:0.6;background-color: rgba(0,0,0,0)"/>
+<br><br><br>
+<input type="submit" form="ac" formaction="/home/" formmethod="get" value="退出登录" class="i" align="right" style="margin-left: 4px;background-color:rgba(251,252,252,0.3);color:#5a5a5a;width: 52px"/>
+<input type="submit" id="accept" name="accept" value="{{ accept }}" form="ac" formaction="/login/" formmethod="post" align="right" class="i"/>
+</form>
+</div>
+<form action="/login/" method="post" onsubmit="return check_up()">
+<div style="height:80%;width:100%;z-index:1;position: absolute;top:10%">
+<center>
+    <p class="titlep">Panda Weather</p>
+</center>
+    <div style="height: 24px;z-index: -2;position: absolute;left:30%;top:3%;opacity:0 ">
+    <input type="text" id="uname" name="uname" readonly="readonly" value="Hi,{{ uname }}" style="font-size: 1px;color:#e7e8e8;text-align: right;width:100%;border: 0;opacity:0.6;background-color: rgba(0,0,0,0)"/>
+    <input type="text" id="accept" name="accept" readonly="readonly" value="{{ accept }}" style="font-size: 1px;color:#e7e8e8;text-align: right;width:100%;border: 0;opacity:0.6;background-color: rgba(0,0,0,0)"/>
+    </div>
+    <br><br><br>
+<center>
+<input type="text" id="city" name="city" placeholder="仅提供全国部分城市天气预报，请点击选择..." autocomplete="off" style="left: -webkit-calc(50% - 200px);background-color: rgba(231,232,232,0.3);border:0 ;width: 400px;height: 30px;color: #636363;">
+</center>
+<script type="text/javascript">
+$("#city").click(function (e) {
+	SelCity(this,e);
+});
+</script>
+<script type="text/javascript">
+function stopss(){
+   return false;
+}
+document.oncontextmenu=stopss;
+</script>
+<br><br>
+<center>
+<p>
+<input type="submit" value="查询" style="cursor:pointer;background-color: rgba(231,232,232,0.3);rgba(231,232,232,0.3);font-style:normal;color:#636363;width:62px;height:30px;font-size:15px; line-height:10px;left: -webkit-calc(50% - 31px)"/>
+</p>
+</center>
+</div>
+</form>
+</div>
+<div class="page page2">
+<style>
+    .titlep3{font-size: 23px;color: #5a5a5a;text-align: left;}
+    .titlep2{font-size: 18px;color: #5a5a5a;text-align: left;}
+    .titlep1{font-size: 37px;color: #5a5a5a  }
+    .titlep0{font-size: 32px;color: rgba(90, 90, 90, 0.87)  }
+    .titlep{font-size: 50px;color: rgba(90, 90, 90, 0.87);font-style: italic}
+</style>
+<section class="fog">
+	<figure class="absolute-bg" style="background-image: url('/static/img/home.jpg');"></figure>
+	<div class="fog__container">
+		<div class="fog__img fog__img--first"></div>
+		<div class="fog__img fog__img--second"></div>
+	</div>
+</section>
+<div style="height:80%;width:100%;z-index:1;position: absolute;top:10%">
+<center>
+    <p class="titlep">Panda Weather</p>
+</center>
+</div>
+<div style="background-color:rgba(231,232,232,0.3);border-radius: 10px 10px 10px;padding:10px 20px 20px 20px;border:0 solid #e7e8e8; z-index: 999;position: absolute;width: 26%;height: 10%;margin: 0 auto;top:30%;left:37%;">
+<center>
+<p class="titlep0">常用城市天气情况</p>
+</center>
+</div>
+<div style="background-color:rgba(231,232,232,0.3);border-radius: 10px 10px 10px;padding:10px 20px 20px 20px;border:0 solid #e7e8e8; z-index: 999;position: absolute;width: 23%;height: 40%;margin: 0 auto;bottom:10%;left:25%;">
+<p class="titlep1">{{ city1 }}<a style="font-size: 15px;float: right;">{{ time1 }}</a></p>
+<p class="titlep2">{{ date1 }}</p>
+<p class="titlep2">{{ temp1 }}</p>
+<p class="titlep2">{{ humi1 }}</p>
+<p class="titlep2">{{ airq1 }}</p>
+<p class="titlep2">{{ rays1 }}</p>
+<p class="titlep2">{{ wind1 }}</p>
+</div>
+<div style="background-color:rgba(231,232,232,0.3); border-radius:10px 10px 10px 10px;padding:47px 20px 20px 20px;border:0 solid #e7e8e8;z-index: 999;position: absolute;width: 23%;height: 40%;margin: 0 auto;bottom:10%;right:25%;">
+<p class="titlep3">{{ tdate1 }}</p>
+<p class="titlep2">{{ ttomw1 }}</p>
+<p class="titlep2">{{ ttemp1 }}</p>
+<p class="titlep2">{{ tairq1 }}</p>
+<p class="titlep2">{{ twind1 }}</p>
+</div>
+</div>
+<div class="page page3">
+<style>
+    .titlep3{font-size: 23px;color: #5a5a5a;text-align: left;}
+    .titlep2{font-size: 18px;color: #5a5a5a;text-align: left;}
+    .titlep1{font-size: 37px;color: #5a5a5a  }
+    .titlep0{font-size: 32px;color: rgba(90, 90, 90, 0.87) }
+    .titlep{font-size: 50px;color: rgba(90, 90, 90, 0.87);font-style: italic}
+</style>
+<section class="fog">
+	<figure class="absolute-bg" style="background-image: url('/static/img/home.jpg');"></figure>
+	<div class="fog__container">
+		<div class="fog__img fog__img--first"></div>
+		<div class="fog__img fog__img--second"></div>
+	</div>
+</section>
+<div style="background-color:rgba(231,232,232,0.3);border-radius: 10px 10px 10px;padding:10px 20px 20px 20px;border:0 solid #e7e8e8; z-index: 999;position: absolute;width: 26%;height: 10%;margin: 0 auto;top:30%;left:37%;">
+<center>
+<p class="titlep0">常用城市天气情况</p>
+</center>
+</div>
+<div style="height:80%;width:100%;z-index:1;position: absolute;top:10%">
+<center>
+    <p class="titlep">Panda Weather</p>
+</center>
+</div>
+<div style="background-color:rgba(231,232,232,0.3);border-radius: 10px 10px 10px;padding:10px 20px 20px 20px;border:0 solid #e7e8e8; z-index: 999;position: absolute;width: 23%;height: 40%;margin: 0 auto;bottom:10%;left:25%;">
+<p class="titlep1">{{ city2 }}<a style="font-size: 15px;float: right;">{{ time2 }}</a></p>
+<p class="titlep2">{{ date2 }}</p>
+<p class="titlep2">{{ temp2 }}</p>
+<p class="titlep2">{{ humi2 }}</p>
+<p class="titlep2">{{ airq2 }}</p>
+<p class="titlep2">{{ rays2 }}</p>
+<p class="titlep2">{{ wind2 }}</p>
+</div>
+<div style="background-color:rgba(231,232,232,0.3); border-radius:10px 10px 10px 10px;padding:47px 20px 20px 20px;border:0 solid #e7e8e8;z-index: 999;position: absolute;width: 23%;height: 40%;margin: 0 auto;bottom:10%;right:25%;">
+<p class="titlep3">{{ tdate2 }}</p>
+<p class="titlep2">{{ ttomw2 }}</p>
+<p class="titlep2">{{ ttemp2 }}</p>
+<p class="titlep2">{{ tairq2 }}</p>
+<p class="titlep2">{{ twind2 }}</p>
+</div>
+</div>
+<div class="page page4">
+<style>
+    .titlep3{font-size: 23px;color: #5a5a5a;text-align: left;}
+    .titlep2{font-size: 18px;color: #5a5a5a;text-align: left;}
+    .titlep1{font-size: 37px;color: #5a5a5a  }
+    .titlep0{font-size: 32px;color: rgba(90, 90, 90, 0.87)  }
+    .titlep{font-size: 50px;color: rgba(90, 90, 90, 0.87);font-style: italic}
+</style>
+<section class="fog">
+	<figure class="absolute-bg" style="background-image: url('/static/img/home.jpg');"></figure>
+	<div class="fog__container">
+		<div class="fog__img fog__img--first"></div>
+		<div class="fog__img fog__img--second"></div>
+	</div>
+</section>
+<div style="background-color:rgba(231,232,232,0.3);border-radius: 10px 10px 10px;padding:10px 20px 20px 20px;border:0 solid #e7e8e8; z-index: 999;position: absolute;width: 26%;height: 10%;margin: 0 auto;top:30%;left:37%;">
+<center>
+<p class="titlep0">常用城市天气情况</p>
+</center>
+</div>
+<div style="height:80%;width:100%;z-index:1;position: absolute;top:10%">
+<center>
+    <p class="titlep">Panda Weather</p>
+</center>
+</div>
+<div style="background-color:rgba(231,232,232,0.3);border-radius: 10px 10px 10px;padding:10px 20px 20px 20px;border:0 solid #e7e8e8; z-index: 999;position: absolute;width: 23%;height: 40%;margin: 0 auto;bottom:10%;left:25%;">
+<p class="titlep1">{{ city3 }}<a style="font-size: 15px;float: right;">{{ time3 }}</a></p>
+<p class="titlep2">{{ date3 }}</p>
+<p class="titlep2">{{ temp3 }}</p>
+<p class="titlep2">{{ humi3 }}</p>
+<p class="titlep2">{{ airq3 }}</p>
+<p class="titlep2">{{ rays3 }}</p>
+<p class="titlep2">{{ wind3 }}</p>
+</div>
+<div style="background-color:rgba(231,232,232,0.3); border-radius:10px 10px 10px 10px;padding:47px 20px 20px 20px;border:0 solid #e7e8e8;z-index: 999;position: absolute;width: 23%;height: 40%;margin: 0 auto;bottom:10%;right:25%;">
+<p class="titlep3">{{ tdate3 }}</p>
+<p class="titlep2">{{ ttomw3 }}</p>
+<p class="titlep2">{{ ttemp3 }}</p>
+<p class="titlep2">{{ tairq3 }}</p>
+<p class="titlep2">{{ twind3 }}</p>
+</div>
+</div>
+</div>
+</body>
+</html>

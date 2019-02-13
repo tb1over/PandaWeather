@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+function check_up(){
+    var upwd = document.getElementById("upwd").value;
+    if(upwd == null || upwd == ''){
+        alert("密码不能为空");
+        return false;
+    }
+    return true;
+}
+function check_un() {
+    var uname = document.getElementById("uname").value;
+    if(uname == null || uname == ''){
+        alert('邮箱账号不能为空');
+        return false;
+    }
+    return true;
+}
+function check_cp() {
+    var cpwd = document.getElementById("cpwd").value;
+    if(cpwd == null || cpwd == ''){
+        alert('确认密码不能为空');
+        return false
+    }
+    return true
+}
+function check_ni() {
+    var nickname = document.getElementById("nickname").value;
+    if(nickname == null || nickname==''){
+        alert('昵称不能为空');
+        return false;
+    }
+    return true
+}
+function check_uc() {
+    var upwd = document.getElementById("upwd").value;
+    var cpwd = document.getElementById("cpwd").value;
+    if (upwd != cpwd){
+        alert('两次密码输入不一致');
+        return false
+    }
+    return true
+}
+</script>
+<style>
+    .titlep{font-size: 50px;color: rgba(90, 90, 90, 0.87);}
+</style>
+<head>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" >
+    <link rel="stylesheet" href="/static/css/inputborder.css">
+    <meta charset="UTF-8">
+    <title>Panda Weather用户注册</title>
+</head>
+<script src="/static/js/realert.js"></script>
+<style>
+div {
+    position: absolute;
+    left: 0%;
+}
+input, button, select, textarea {outline:none}
+p {color:#41637C;text-align:center;}
+input {color:#41637C;}
+</style>
+<link rel="stylesheet" href="/static/css/style.css">
+<body>
+<section class="fog">
+	<figure class="absolute-bg" style="background-image: url('/static/img/home.jpg');"></figure>
+	<div class="fog__container">
+		<div class="fog__img fog__img--first"></div>
+		<div class="fog__img fog__img--second"></div>
+	</div>
+</section>
+<div style="width:100%; height:80%;top:8%">
+<form action="register_01/" method="post"  onsubmit="return check_ni() && check_un()  && check_up()  && check_cp()  && check_uc()">
+    <p class="titlep">Panda Weather</p>
+    <br><br><br><br><br>
+    <p><input type="text" id="nickname" name="nickname" placeholder="请输入您的昵称" autocomplete="off" style="border:0;color:#5a5a5a;background-color:rgba(231,232,232,0.3);width:300px;height:25px;font-style: italic;font-size: 15px;"/></p>
+    <br>
+    <p><input type="text" id="uname" name="uname" placeholder="请输入邮箱账号" autocomplete="off" style="border:0;color:#5a5a5a;background-color:rgba(231,232,232,0.3);width:300px;height:25px;font-style: italic;font-size: 15px;"/></p>
+    <br>
+    <p><input type="password" id="upwd" name="upwd" placeholder="请输入密码,由字母,数字或下划线组成" style="border:0;color:#5a5a5a;background-color:rgba(231,232,232,0.3);width:300px;height:25px;font-style: italic;font-size: 15px;"/></p>
+    <br>
+    <p><input type="password" id="cpwd" name="cpwd" placeholder="请确认密码" style="border:0;color:#5a5a5a;background-color:rgba(231,232,232,0.3);width:300px;height:25px;font-style: italic;font-size: 15px;"/></p>
+    <br>
+    <p><input type="submit" value="发送验证码" style="cursor:pointer;padding:1px;font-size: 15px;width: 90px;height: 30px;background-color: rgba(231,232,232,0.3);color: #5a5a5a"/></p>
+</form>
+</div>
+</body>
+</html>

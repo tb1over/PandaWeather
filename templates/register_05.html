@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="refresh" content="3;url=/login/">
+<head>
+    <meta charset="UTF-8">
+    <title>注册成功</title>
+    <link rel="stylesheet" href="/static/css/inputborder.css">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" >
+</head>
+<script src="/static/js/realert.js"></script>
+<style>
+div {
+position: absolute;
+left: 0%;
+}
+input, button, select, textarea {outline:none}
+</style>
+<link rel="stylesheet" href="/static/css/style.css">
+<body>
+<section class="fog">
+	<figure class="absolute-bg" style="background-image: url('/static/img/home.jpg');"></figure>
+	<div class="fog__container">
+		<div class="fog__img fog__img--first"></div>
+		<div class="fog__img fog__img--second"></div>
+	</div>
+</section>
+<form action="/login/" method="get">
+    {% csrf_token %}
+    <div style="width:100%; height:80%;top:8%">
+        <p style="text-align:center;font-size: 50px;color: rgba(90, 90, 90, 0.87);">
+            Panda Weather
+        </p>
+        <br><br><br><br><br>
+        <p style="text-align:center;color: #e7e8e8;font-size: 20px">
+        注册成功！3秒后将跳转至登陆页面
+        </p>
+        <br><br>
+        <p style="text-align:center">
+        <input type="submit" value="立即跳转" style="cursor:pointer;padding:1px;font-size: 15px;width: 90px;height: 30px;background-color: rgba(231,232,232,0.3);color: #5a5a5a">
+        </p>
+    </div>
+</form>
+</body>
+</html>

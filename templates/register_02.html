@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panda Weather用户注册</title>
+</head>
+<link rel="shortcut icon" href="/static/img/favicon.ico" >
+<link rel="stylesheet" href="/static/css/inputregister_02.css">
+<script>
+function postform(obj){
+    var obj2=document.getElementsByName("choose");
+    for(var i=0;i<obj2.length;i++){
+         if(obj2[i].checked==true){
+             temp=1;
+             break;
+         }else{
+             temp=0;
+        }
+    }
+    if(temp==0){
+        alert("请选择");
+        return false;
+    }
+}
+</script>
+<style>
+div {
+    position: absolute;
+    left: 0;
+}
+p {color: #5a5a5a; text-align:center;}
+input, button, select, textarea {outline:none}
+.titlep{font-size: 50px;color: rgba(90, 90, 90, 0.87);}
+</style>
+<script src="/static/js/realert.js"></script>
+<link rel="stylesheet" href="/static/css/style.css">
+<body>
+<section class="fog">
+	<figure class="absolute-bg" style="background-image: url('/static/img/home.jpg');"></figure>
+	<div class="fog__container">
+		<div class="fog__img fog__img--first"></div>
+		<div class="fog__img fog__img--second"></div>
+	</div>
+</section>
+<form action="/register/register_db/" method="post" onsubmit="return postform(this)">
+    <div style="width:100%; height:80% ;top:8%">
+        <p class="titlep">Panda Weather</p>
+        <center>
+        <div style="border-radius: 10px 10px 10px;;background-color: rgba(231,232,232,0.3);top:35%; height: 150px;width: 500px;left:-webkit-calc(50% - 250px)">
+            <p style="opacity: 0;font-size: 5px">.</p>
+        <p style="font-size:20px;color:#5A5A5A">验证成功!</p>
+        <p style="font-size:20px;color:#5A5A5A">允许向您的邮箱发送每日天气提醒？</p>
+        <p style="font-size:20px;color:#5A5A5A">(将于每晚7点向您的邮箱发送次日天气预报)</p>
+            <br>
+        <p style="font-size:20px;">
+            <input type="radio" name="choose" value="1">是
+            <label style="opacity: 0">........</label>
+            or
+            <label style="opacity: 0">........</label>
+            否<input type="radio" name="choose" value="2">
+        </p>
+        </div>
+        <div style="top:70%;width: 100%">
+            <br>
+        <p style="text-align:center;"><input class="yinput" type="submit" value="确认" style="cursor:pointer;padding:1px;font-size: 15px;width: 90px;height: 30px;background-color: rgba(231,232,232,0.3);color: #5a5a5a"></p>
+        </div>
+        </center>
+    </div>
+</form>

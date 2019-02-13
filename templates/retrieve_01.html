@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panda Weather找回密码</title>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" >
+    <link rel="stylesheet" href="/static/css/inputborder.css">
+</head>
+<style>
+div {
+    position: absolute;
+    left: 0%;
+}
+p {color:#41637C;text-align:center;}
+input {color:#41637C;}
+input, button, select, textarea {outline:none}
+.titlep{font-size: 50px;color: rgba(90, 90, 90, 0.87);}
+</style>
+<script src="/static/js/realert.js"></script>
+<link rel="stylesheet" href="/static/css/style.css">
+<body>
+<section class="fog">
+	<figure class="absolute-bg" style="background-image: url('/static/img/home.jpg');"></figure>
+	<div class="fog__container">
+		<div class="fog__img fog__img--first"></div>
+		<div class="fog__img fog__img--second"></div>
+	</div>
+</section>
+<div style="width:100%; height:50%;top:8%">
+<form action="/retrieve/retrieve_01/" method="post">
+    <p class="titlep">Panda Weather</p>
+    <br><br><br>
+    <p style="opacity:0;"> .</p>
+    <p style="opacity:0;"> 一</p>
+    <p style="color: #e7e8e8">如您未收到验证码，请返回确认您的邮箱输入是否正确</p>
+    <br>
+    <p><input type="text" id="verification" name="verification" placeholder="请输入邮箱内验证码" autocomplete="off" style="border:0;color:#5a5a5a;background-color:rgba(231,232,232,0.3);width:300px;height:25px;font-style: italic;font-size: 15px;"/></p>
+    <br>
+    <p><input type="submit" value="点击验证" style="cursor:pointer;padding:1px;font-size: 15px;width: 90px;height: 30px;background-color: rgba(231,232,232,0.3);color: #5a5a5a"/></p>
+</form>
+</div>
+</body>
+</html>

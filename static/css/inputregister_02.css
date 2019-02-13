@@ -1,0 +1,13 @@
+.yinput {
+    margin: 0;
+    padding: 10px 0;
+    border: 0 solid rgb(180, 180, 180);
+    border-radius: 8px;                /* 圆角边框 */
+    width: 150px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #9a9c9a;
+}
+.yinput:hover {
+    border: 1px solid rgb(180, 180, 180);
+}

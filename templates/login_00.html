@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<script>
+function check_up(){
+    var upwd = document.getElementById("upwd").value;
+    if(upwd == null || upwd == ''){
+        alert("密码不能为空");
+        return false;
+    }
+    return true;
+}
+function check_un() {
+    var uname = document.getElementById("uname").value;
+    if(uname == null || uname == ''){
+        alert('邮箱账号不能为空');
+        return false;
+    }
+    return true;
+}
+</script>
+<script src="/static/js/realert.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Panda Weather用户登录</title>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" >
+    <link rel="stylesheet" href="/static/css/inputborder.css">
+</head>
+<style>
+    input, button, select, textarea {outline:none}
+.hdiv {position: absolute;}
+    .titlep3{font-size: 20px;color: #5a5a5a;text-align: left;}
+    .titlep2{font-size: 20px;color: #5a5a5a;text-align: left;}
+    .titlep1{font-size: 30px;color: #5a5a5a  }
+    .titlep{font-size: 50px;color: rgba(90, 90, 90, 0.87);}
+    input::-webkit-input-placeholder{color: #5a5a5a;}
+</style>
+<link rel="stylesheet" href="/static/css/style.css">
+<body>
+<section class="fog">
+	<figure class="absolute-bg" style="background-image: url('/static/img/home.jpg');"></figure>
+	<div class="fog__container">
+		<div class="fog__img fog__img--first"></div>
+		<div class="fog__img fog__img--second"></div>
+	</div>
+</section>
+<div class="hdiv" style="width:100%; height:80%;top:8%">
+<form action="" method="post"  onsubmit="return check_un()  && check_up()">
+    <center>
+    <p class="titlep">Panda Weather</p>
+        <br><br>
+        <p style="opacity:0;">.</p>
+        <p style="opacity:0;">.</p>
+        <br>
+    <p><input type="text" id="uname" name="uname" placeholder="请输入账号..." autocomplete="off" style="border:0;color:#5a5a5a;background-color:rgba(231,232,232,0.3);width:300px;height:25px;font-style: italic;font-size: 15px;"/></p>
+        <br>
+    <p><input type="password" id="upwd" name="upwd" placeholder="请输入密码..." style="border:0;color:#5a5a5a;background-color:rgba(231,232,232,0.3);width:300px;height:25px;font-style: italic;font-size: 15px;"/></p>
+        <br>
+    <p><input type="submit" value="登录" style="cursor:pointer;padding:1px;font-size: 15px;width: 50px;height: 30px;background-color: rgba(231,232,232,0.3);color: #5a5a5a"/></p>
+    </center>
+</form>
+<form>
+    <br>
+<p style="text-align:center;">
+<input type="submit" formaction="/register/" formmethod="get" value="用户注册" style="cursor:pointer;padding:1px;font-size: 15px;width: 80px;height: 30px;background-color: rgba(231,232,232,0.3);color: #5a5a5a">
+<i style="opacity:0;">...................</i>
+<input type="submit" formaction="/retrieve/" formmethod="get" value="找回密码" style="cursor:pointer;padding:1px;font-size: 15px;width: 80px;height: 30px;background-color: rgba(231,232,232,0.3);color: #5a5a5a">
+</p>
+</form>
+</div>
+</body>
+</html>

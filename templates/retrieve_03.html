@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+ <script>
+    function check_un() {
+        var uname = document.getElementById("uname").value;
+        if(uname == null || uname == ''){
+            alert('邮箱账号不能为空');
+            return false;
+        }
+        return true;
+    }
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Panda Weather找回密码</title>
+    <link rel="stylesheet" href="/static/css/inputborder.css">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" >
+</head>
+<style>
+    .titlep{font-size: 50px;color: rgba(90, 90, 90, 0.87);}
+div {
+    position: absolute;
+
+    left: 0;
+}
+input, button, select, textarea {outline:none}
+p {color:#41637C;text-align:center;}
+input {color:#41637C;}
+</style>
+<script src="/static/js/realert.js"></script>
+<link rel="stylesheet" href="/static/css/style.css">
+<body>
+<section class="fog">
+	<figure class="absolute-bg" style="background-image: url('/static/img/home.jpg');"></figure>
+	<div class="fog__container">
+		<div class="fog__img fog__img--first"></div>
+		<div class="fog__img fog__img--second"></div>
+	</div>
+</section>
+<div style="width:100%; height:80%;top:8%">
+    <p class="titlep">Panda Weather</p>
+    <br><br><br><br>
+    <p style="color: #e7e8e8">用户不存在，请确认您的邮箱填写无误</p>
+
+    <p style="color: #e7e8e8">如您没有账号,请点击下方注册</p>
+    <br>
+    <form action="/retrieve/retrieve/" method="post" onsubmit="return check_un()">
+    <p><input type="text" id="uname" name="uname" placeholder="输入要找回密码的邮箱账号..." autocomplete="off" style="border:0;color:#5a5a5a;background-color:rgba(231,232,232,0.3);width:300px;height:25px;font-style: italic;font-size: 15px";/></p>
+        <br>
+    <p><input type="submit" value="发送验证码" style="cursor:pointer;padding:1px;font-size: 15px;width: 90px;height: 30px;background-color: rgba(231,232,232,0.3);color: #5a5a5a"/></p>
+    </form>
+    <form action="/register/" method="get">
+        <br>
+    <p><input type="submit" value="用户注册" style="cursor:pointer;padding:1px;font-size: 15px;width: 90px;height: 30px;background-color: rgba(231,232,232,0.3);color: #5a5a5a"/></p>
+    </form>
+</div>
+</body>
+</html>

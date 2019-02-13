@@ -1,0 +1,32 @@
+/*form {*/
+    /*position: absolute;   !* 表单定位 *!*/
+    /*top: 50px;            !* 表单定位 *!*/
+    /*left: 200px;          !* 表单定位 *!*/
+    /*color: rgb(120, 120, 120);*/
+/*}*/
+fieldset {
+    border: none;
+    display: inline;
+}
+label {
+    display: block;
+    margin: 0;
+    padding: 10px 1px;
+    width: 150px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+input {
+    margin: 0;
+    padding: 10px 0;
+    border: 0 solid rgb(180, 180, 180);
+    border-radius: 8px;                /* 圆角边框 */
+    width: 150px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #9a9c9a;
+}
+input:hover {
+    border: 1px solid rgb(180, 180, 180);
+}

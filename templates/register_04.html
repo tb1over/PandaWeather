@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>邮箱账号已注册</title>
+        <link rel="stylesheet" href="/static/css/inputborder.css">
+        <link rel="shortcut icon" href="/static/img/favicon.ico" >
+    </head>
+    <script src="/static/js/realert.js"></script>
+    <style>
+    div {
+        position: absolute;
+        left: 0;
+    }
+input, button, select, textarea {outline:none}
+    </style>
+<link rel="stylesheet" href="/static/css/style.css">
+<body>
+<section class="fog">
+	<figure class="absolute-bg" style="background-image: url('/static/img/home.jpg');"></figure>
+	<div class="fog__container">
+		<div class="fog__img fog__img--first"></div>
+		<div class="fog__img fog__img--second"></div>
+	</div>
+</section>
+        <div style="position: absolute;width:100%; height:80%;top:8%">
+            <p style="text-align:center;font-size: 50px;color: rgba(90, 90, 90, 0.87);">Panda Weather</p>
+            <br><br><br><br><br><br>
+            <p style="text-align:center;color: #e7e8e8">您输入的邮箱账号为已注册状态，无法再次注册</p>
+            <br>
+            <p style="text-align:center;color: #e7e8e8">您可以选择</p>
+            <br>
+            <form action="/login/">
+                <center>
+                <p><input type="submit" value="登录" style="cursor:pointer;padding:1px;font-size: 15px;width: 50px;height: 30px;background-color: rgba(231,232,232,0.3);color: #5a5a5a"/></p>
+                </center>
+            </form>
+            <form action="/retrieve/">
+                <center>
+                    <br>
+                <p><input type="submit" value="忘记密码" style="cursor:pointer;padding:1px;font-size: 15px;width: 90px;height: 30px;background-color: rgba(231,232,232,0.3);color: #5a5a5a"/></p>
+                </center>
+            </form>
+        </div>
+    </body>
+</html>
